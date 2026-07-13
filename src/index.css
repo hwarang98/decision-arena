@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0a0d12;
+  color: #e9eef5;
+  font-family: Pretendard, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* 커스텀 슬라이더 (기준 중요도 / 점수) */
+input[type='range'].arena-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--track, #232c37);
+  outline: none;
+  cursor: pointer;
+}
+input[type='range'].arena-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--thumb, #2ff58f);
+  border: 3px solid #0a0d12;
+  box-shadow: 0 0 0 1px var(--thumb, #2ff58f), 0 0 14px -2px var(--thumb, #2ff58f);
+  transition: transform 0.12s ease;
+}
+input[type='range'].arena-range::-webkit-slider-thumb:active {
+  transform: scale(1.18);
+}
+input[type='range'].arena-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--thumb, #2ff58f);
+  border: 3px solid #0a0d12;
+  box-shadow: 0 0 0 1px var(--thumb, #2ff58f);
+}
+
+/* 포커스 접근성: 키보드 탐색 시 뚜렷한 링 */
+:focus-visible {
+  outline: 2px solid #37d7ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 은은한 격자 배경 유틸 */
+.arena-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #232c37;
+  border-radius: 999px;
+  border: 2px solid #0a0d12;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2e3946;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
