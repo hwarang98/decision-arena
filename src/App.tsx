@@ -205,27 +205,27 @@ export default function App() {
   const activeIntense = step === 'battle' || step === 'result';
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen min-w-0 overflow-x-hidden">
       <ArenaBackground intense={activeIntense} />
 
       {/* 헤더 */}
       <header className="sticky top-0 z-30 border-b border-arena-line/60 bg-arena-bg/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+        <div className="mx-auto flex w-full max-w-5xl min-w-0 items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <button
             type="button"
             onClick={newDecision}
-            className="flex items-center gap-2"
+            className="flex min-w-0 items-center gap-2"
             aria-label="Decision Arena 홈"
           >
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-neon text-arena-bg">
               <Swords className="h-5 w-5" />
             </span>
-            <span className="font-display text-lg tracking-tight">
+            <span className="truncate font-display text-base tracking-tight min-[390px]:text-lg">
               DECISION <span className="text-neon">ARENA</span>
             </span>
           </button>
 
-          <div className="flex items-center gap-4">
+          <div className="flex shrink-0 items-center gap-3 sm:gap-4">
             {showStepper && (
               <nav aria-label="진행 단계" className="hidden items-center gap-2 sm:flex">
                 {STEP_LABELS.map((s, i) => {
@@ -278,7 +278,7 @@ export default function App() {
       </header>
 
       {/* 본문 */}
-      <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
+      <main className="mx-auto w-full max-w-5xl min-w-0 px-4 py-6 sm:px-6 sm:py-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}

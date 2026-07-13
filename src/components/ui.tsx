@@ -218,12 +218,12 @@ export function SplitTitle({
 }) {
   const chars = Array.from(text);
   return (
-    <span className={cn('inline-block', className)} aria-label={text}>
+    <span className={cn('inline max-w-full whitespace-normal break-words', className)} aria-label={text}>
       {chars.map((c, i) => (
         <motion.span
           key={i}
           aria-hidden
-          className="inline-block"
+          className={cn('inline-block', c === ' ' && 'w-2 sm:w-3')}
           initial={{ y: '0.5em', opacity: 0, filter: 'blur(6px)' }}
           animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
           transition={{ delay: delay + i * 0.035, duration: 0.4, ease: 'easeOut' }}
@@ -338,7 +338,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        'rounded-2xl border border-arena-line bg-arena-panel/80 backdrop-blur-sm shadow-card',
+        'min-w-0 rounded-2xl border border-arena-line bg-arena-panel/80 backdrop-blur-sm shadow-card',
         className,
       )}
     >

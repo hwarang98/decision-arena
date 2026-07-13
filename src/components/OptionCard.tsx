@@ -26,10 +26,11 @@ export function OptionCard({
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.8, y: -8 }}
       transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+      className="min-w-0"
     >
-      <TiltCard glareColor={option.color} max={8} className="rounded-2xl">
+      <TiltCard glareColor={option.color} max={8} className="min-w-0 rounded-2xl">
         <div
-          className="group relative overflow-hidden rounded-2xl border bg-arena-panel2 p-4"
+          className="group relative min-w-0 overflow-hidden rounded-2xl border bg-arena-panel2 p-3.5 sm:p-4"
           style={{
             borderColor: withAlpha(option.color, 0.35),
             boxShadow: `inset 0 1px 0 ${withAlpha(option.color, 0.15)}`,
@@ -52,7 +53,7 @@ export function OptionCard({
               onChange={(e) => onRename(option.id, e.target.value)}
               placeholder={`선택지 ${index + 1}`}
               aria-label={`선택지 ${index + 1} 이름`}
-              className="min-w-0 flex-1 bg-transparent text-lg font-semibold text-arena-text outline-none placeholder:text-arena-muted/60"
+              className="min-w-0 flex-1 bg-transparent text-base font-semibold text-arena-text outline-none placeholder:text-arena-muted/60 sm:text-lg"
             />
             <GripVertical className="hidden h-4 w-4 text-arena-muted/50 sm:block" aria-hidden />
             <button

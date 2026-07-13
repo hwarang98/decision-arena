@@ -29,17 +29,17 @@ export function SetupStep({
   const ready = named.length >= 2;
 
   return (
-    <div className="mx-auto w-full max-w-3xl">
+    <div className="mx-auto w-full max-w-3xl min-w-0">
       <div className="mb-6">
-        <p className="mb-2 flex items-center gap-2 text-sm font-medium tracking-wide text-neon">
+        <p className="mb-2 flex min-w-0 items-center gap-2 text-sm font-medium tracking-wide text-neon">
           <Swords className="h-4 w-4" /> STEP 1 · 고민 입력
         </p>
-        <h2 className="font-display text-3xl leading-tight sm:text-4xl">
+        <h2 className="max-w-full break-words font-display text-2xl leading-tight min-[390px]:text-3xl sm:text-4xl">
           <SplitTitle text="무엇을 두고 고민 중인가요?" />
         </h2>
       </div>
 
-      <Panel className="p-5 sm:p-6">
+      <Panel className="overflow-hidden p-4 sm:p-6">
         <label htmlFor="question" className="mb-2 block text-sm text-arena-muted">
           오늘의 고민
         </label>
@@ -48,10 +48,10 @@ export function SetupStep({
           value={question}
           onChange={(e) => onQuestion(e.target.value)}
           placeholder="예: 오늘 뭐 먹지?"
-          className="w-full rounded-xl border border-arena-line bg-arena-bg2 px-4 py-3 text-xl font-semibold outline-none transition-colors focus:border-neon/60"
+          className="min-w-0 w-full rounded-xl border border-arena-line bg-arena-bg2 px-4 py-3 text-base font-semibold outline-none transition-colors focus:border-neon/60 sm:text-xl"
         />
 
-        <div className="mt-6 mb-3 flex items-center justify-between">
+        <div className="mt-6 mb-3 flex min-w-0 flex-wrap items-center justify-between gap-3">
           <span className="text-sm text-arena-muted">
             선택지 <b className="text-arena-text">{named.length}</b>개
             <span className="ml-1 text-arena-muted/70">(최소 2개)</span>
@@ -65,7 +65,7 @@ export function SetupStep({
           </button>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
           <AnimatePresence mode="popLayout">
             {options.map((o, i) => (
               <OptionCard
@@ -90,11 +90,11 @@ export function SetupStep({
         </motion.button>
       </Panel>
 
-      <div className="mt-6 flex items-center justify-between gap-4">
-        <p className="text-sm text-arena-muted">
+      <div className="mt-6 flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="min-w-0 text-sm text-arena-muted">
           {ready ? '좋아요. 이제 기준을 정할 차례예요.' : '이름 있는 선택지가 2개 이상 필요해요.'}
         </p>
-        <Button onClick={onNext} disabled={!ready}>
+        <Button onClick={onNext} disabled={!ready} className="w-full sm:w-auto">
           기준 설정 <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
